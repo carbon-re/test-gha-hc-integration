@@ -17,3 +17,5 @@ jobs:
           status: ${{ job.status }}
       - name: Echo
         run: echo "Hello, world!"
+      - name: Sleep
+        run: sleep 10
