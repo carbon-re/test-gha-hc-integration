@@ -9,6 +9,8 @@ jobs:
   setup:
     permissions: write-all
     runs-on: ubuntu-latest
+    outputs:
+        trace-start: ${{ steps.set-trace-start.outputs.trace-start }}
     steps:
       - uses: actions/checkout@v3
       - name: Set trace-start
@@ -29,8 +31,6 @@ jobs:
           status: ${{ job.status }}
       - name: Echo
         run: echo "Hello, world!"
-      - name: Sleep
-        run: sleep 10
 
   plan2:
     permissions: write-all
@@ -46,7 +46,7 @@ jobs:
       - name: Echo
         run: echo "Hello, world!"
       - name: Sleep
-        run: sleep 10
+        run: sleep 3
 
   deploy:
     permissions: write-all
@@ -62,7 +62,7 @@ jobs:
       - name: Echo
         run: echo "Hello, world!"
       - name: Sleep
-        run: sleep 10
+        run: sleep 5
 
   end-trace:
     name: End Trace
