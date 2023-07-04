@@ -10,10 +10,10 @@ jobs:
         permissions: write-all
         runs-on: ubuntu-latest
         steps:
-            - name: Set trace-start
-            id: set-trace-start
-            run: |
-                echo ::set-output name=trace-start::$(date +%s) 
+            -   name: Set trace-start
+                id: set-trace-start
+                run: |
+                    echo ::set-output name=trace-start::$(date +%s) 
     
     plan:
         permissions: write-all
@@ -22,9 +22,9 @@ jobs:
         steps:
           - uses: honeycombio/gha-buildevents@v2
             with:
-            apikey: ${{ secrets.HONEYCOMB_BUILDEVENTS_API_KEY }}
-            dataset: gha-buildevents_integration
-            status: ${{ job.status }}
+                apikey: ${{ secrets.HONEYCOMB_BUILDEVENTS_API_KEY }}
+                dataset: gha-buildevents_integration
+                status: ${{ job.status }}
           - name: Echo
             run: echo "Hello, world!"
           - name: Sleep
@@ -38,9 +38,9 @@ jobs:
         steps:
             -   uses: honeycombio/gha-buildevents@v2
                 with:
-                apikey: ${{ secrets.HONEYCOMB_BUILDEVENTS_API_KEY }}
-                dataset: gha-buildevents_integration
-                status: ${{ job.status }}
+                    apikey: ${{ secrets.HONEYCOMB_BUILDEVENTS_API_KEY }}
+                    dataset: gha-buildevents_integration
+                    status: ${{ job.status }}
             - name: Echo
               run: echo "Hello, world!"
             - name: Sleep
