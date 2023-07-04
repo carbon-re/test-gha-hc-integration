@@ -16,10 +16,10 @@ jobs:
       - name: Set trace-start
         id: set-trace-start
         run: |
-          echo ::set-output name=trace-start::$(date +%s)
+          echo ::set-output name=trace-start::$(date +%s)          
 
       - name: Buildevents
-        uses: honeycombio/gha-buildevents@v2.1.0
+        uses: honeycombio/gha-buildevents@v2
         with:
           apikey: ${{ secrets.HONEYCOMB_BUILDEVENTS_API_KEY }}
           dataset: gha-buildevents_integration
@@ -46,6 +46,7 @@ jobs:
     outputs:
       trace-start: ${{ steps.set-trace-start.outputs.trace-start }}
 
+
   matrix:
     name: Matrix
     runs-on: ubuntu-latest
@@ -60,7 +61,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Buildevents
-        uses: honeycombio/gha-buildevents@v2.1.0
+        uses: honeycombio/gha-buildevents@v2
         with:
           apikey: ${{ secrets.HONEYCOMB_BUILDEVENTS_API_KEY }}
           dataset: gha-buildevents_integration
@@ -86,7 +87,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: technote-space/workflow-conclusion-action@v3
       - name: Buildevents
-        uses: honeycombio/gha-buildevents@v2.1.0
+        uses: honeycombio/gha-buildevents@v2
         with:
           # Required: a Honeycomb API key - needed to send traces.
           #           this must be set in your GitHub repository under Settings > Secrets > Actions
